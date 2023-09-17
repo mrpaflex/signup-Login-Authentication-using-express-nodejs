@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+</head>
+<body>
+    <h2>fill the form below to signup</h2>
+    <form action="/createuser" method="POST">
+        <label for="yourname"> full name</label><br>
+        <input id="yourname" type="text" name="full_Name"  required value="<%= typeof yourname != 'undefined' ? yourname: '' %>" ><br>
+        <label for="email"> email address</label><br>
+        <input id="email" type="email" name="email"  required  value="<%= typeof email != 'undefined' ? email: '' %>"><br>
+        <label for="username">username</label><br>
+        <input id="username" type="text" name="username"  required  value="<%= typeof username != 'undefined' ? username: '' %>"><br />
+        <label for="password">password</label><br>
+         
+        <input id="password" type="password" name="password" required ><br>
+        <label for="comfirmPassword">Comfirm Password</label><br>
+        <input  type="password" name="comfirmPassword" id="comfirmPassword" required><br />
+        <button type="submit">Create Account</button>
+        
+
+    </form>
+    <p>I already have an account <a href="/login">Click Here</a></p>
+    <p>Home Page <a href="/"> Click Here</a></p>
+    
+</body>
+</html>

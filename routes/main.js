@@ -12,9 +12,8 @@ router.get('/', home_controller.getIndex)
 router.get('/login', auth_controller.getlogin)
 router.get('/signup', auth_controller.getsignup)
 router.post('/createuser', auth_controller.checkSignupUser)
-router.post('/loginuser', auth_controller.loginCheck)
+router.post('/login', auth_controller.loginCheck)
 router.get('/dashboard', ensureAuth,  home_controller.checkuser)
-
-
+router.get('/logout',  auth_controller.logout)
 
 module.exports = router

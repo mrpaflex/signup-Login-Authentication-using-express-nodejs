@@ -1,10 +1,9 @@
 const passport = require('passport');
-//const validator = require('validator');
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
 module.exports = {
-    getlogin: (request, response)=> {
+    getlogin: async (request, response)=> {
         if(request.user){
             return response.redirect('/dashboard')
         
@@ -92,7 +91,7 @@ module.exports = {
          }
     },
 
-    loginCheck: (req, res, next) => {
+    loginCheck:  async (req, res, next) => {
         passport.authenticate('local', (err, user, info) => {
             if (err) {
                 return next(err);
@@ -100,17 +99,29 @@ module.exports = {
             if (!user) {
                 return res.redirect('/login');
             }
-            req.login(user, (err) => {
+            req.login(user, (err) => {//the req.login is coming from passportjs
                 if (err) {
                     return next(err);
                 }
-                req.flash('msg', 'success')
-                return res.redirect('/dashboard');
+
+              
+                //req.flash('msg', 'success')
+               return res.redirect('/dashboard');
+                //return res.redirect(req.session.user || '/dashboard', {name: req.user});
                 
             });
         })(req, res, next);
+    },
+    
+    logout: (req, res) => {
+        req.logout(()=>{
+            console.log('User has logged out.');
+            res.redirect('/'); // Redirect to the home page or another appropriate page
+        }); // Log the user out
+
     }
     
+      
 
  }
 

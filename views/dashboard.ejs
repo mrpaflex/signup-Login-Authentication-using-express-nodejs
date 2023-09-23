@@ -6,6 +6,27 @@
     <title>dashboard</title>
 </head>
 <body>
-    <h3>welcome to dashboard</h3>
+    <h2>This is the dashboard</h2>
+
+
+
+<h1>User Posts</h1>
+<ul>
+  <% holdposts.forEach(mypost =>{%>
+    <li>
+      <h2><%= mypost.title%></h2>
+      <p><%= mypost.authorName%></p>
+    </li>
+
+ <% })%>
+
+</ul>
+    <a href="dashboard/update">update you profile</a><br><br>
+
+    <a href="dashboard/posts">Make A post</a>
+
+    <p>click here to go to home page <a href="/">Home</a></p>
+
+    <a href="/logout">logout</a>
 </body>
 </html>

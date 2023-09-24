@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const passport = require('passport')
+const passport = require('passport');
 const session = require('express-session')
-//const MongoStore = require('connect-mongo')(session)
+const MongoStore = require('connect-mongo')
 const flash = require('express-flash')
  //const logger = require('morgan')
  const mainRoute = require('./routes/main');
@@ -27,7 +27,7 @@ app.use(session({
     secret: 'mohbad-dead',
     resave: false,
     saveUninitialized: true,
-    //: new MongoStore({mongooseConnection: mongoose.connection()}),
+    store: MongoStore.create({mongoUrl: process.env.DB_URI}),
   }));
 
 app.use(passport.initialize());

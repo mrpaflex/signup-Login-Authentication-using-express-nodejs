@@ -2,27 +2,26 @@ const Post = require('../models/Mypost');
 const User = require('../models/User');
 
 module.exports = {
-  myPostInDashboard: async (req, res) => {
+  // myPostInDashboard: async (req, res) => {
     
-    try {
-      const userposts = await Post.find({ userId:req.user.userId });
+  //   try {
+  //     const userposts = await Post.find({ userId:req.user.userId });
   
-      if (!userposts || userposts.length === 0) {
-        console.log('You haven\'t made any posts yet');
-      }
+  //     if (!userposts || userposts.length === 0) {
+  //       console.log('You haven\'t made any posts yet this from other');
+  //     }
   
-      res.render('/dashboard', { holdposts: userposts });
+  //     res.render('/dashboard', { holdposts: userposts });
 
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Error retrieving posts: ' + error.message);
-    }
-  },
+  //   } catch (error) {
+  //     console.error(error);
+  //     res.status(500).send('Error retrieving posts: ' + error.message);
+  //   }
+  // },
 
 
   takeMeposts: async (req, res)=>{
             res.render('posts')
-            console.log('this is post route')
     },
 
     makePost : async (req, res)=>{

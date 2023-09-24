@@ -9,7 +9,7 @@ module.exports = {
         
         }
         // response.sendFile(__dirname + 'index.html')
-        response.render('login.ejs')
+        response.render('login')
     },
 
     getsignup: (request, response)=> {
@@ -18,7 +18,7 @@ module.exports = {
            
         }
         // response.sendFile(__dirname + 'index.html')
-        response.render('signup.ejs')
+        response.render('signup')
     },
 
     checkSignupUser: async (request, response, next)=> {
@@ -62,31 +62,31 @@ module.exports = {
             })
 
             if (userExist) {
-                errors.push({msg: 'user with same detail already exist'})
-               
-                response.render('signup', {
-                    full_Name,
-                    email,
-                    username
+                        errors.push({msg: 'user with same detail already exist'})
+                    
+                        response.render('signup', {
+                            full_Name,
+                            email,
+                            username
                 })
             }else{
-                //procced tohash password
-                const newUser = await new User({
-                    full_Name,
-                    username,
-                    email,
-                    password
+                        //procced tohash password
+                        const newUser = await new User({
+                            full_Name,
+                            username,
+                            email,
+                            password
                 })
-        const salt = bcrypt.genSaltSync(10)
-        const hashPassword = bcrypt.hashSync(newUser.password, salt)
+                            const salt = bcrypt.genSaltSync(10)
+                            const hashPassword = bcrypt.hashSync(newUser.password, salt)
 
-        newUser.password = hashPassword;
+                            newUser.password = hashPassword;
 
-        //save to database
-        newUser.save()
+                            //save to database
+                            newUser.save()
 
-        response.redirect('/login')
-        request.flash('success')
+                            response.redirect('/login')
+                            request.flash('success')
             }   
          }
     },

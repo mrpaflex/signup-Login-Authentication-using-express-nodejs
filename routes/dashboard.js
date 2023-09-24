@@ -3,7 +3,7 @@ const router = express.Router()
 const {ensureAuth} = require('../middleware/authcheck')
 const dashboard_controller = require('../controllers/dashboard');
 
-router.get('/', dashboard_controller.myPostInDashboard)
+//router.get('/', dashboard_controller.myPostInDashboard)
 
 router.get('/update', ensureAuth, dashboard_controller.checkmeupdate)
 

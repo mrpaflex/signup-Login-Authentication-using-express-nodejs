@@ -14,8 +14,9 @@
 <ul>
   <% holdposts.forEach(mypost =>{%>
     <li>
-      <h2><%= mypost.title%></h2>
-      <p><%= mypost.authorName%></p>
+      <h2><%= mypost.authorName%></h2>
+      <h4><%= mypost.title%></h4>
+      <p><%= mypost.body%></p>
     </li>
 
  <% })%>
